@@ -2,17 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ea50c2c-561b-4b32-9b50-58301dc11afe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/delivery/static/customer/2022/03/hinh-nen-Lamborghini-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/delivery/static/customer/2022/03/tenor-16125962391241416966599-crop-16125962422021809343536.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/migrations/0002_alter_customer_avatar_alter_deliver_avatar_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/migrations/0003_alter_product_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/static/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/static/customer/2022/03/272009992_470002341234531_8050036552928903003_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/static/customer/2022/03/hinh-nen-Lamborghini-1_noTYNS8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/static/product/2022/03/iphone_13-_pro-5_4_1_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/static/product/2022/03/iphone_13-_pro-5_4_1_1_G7bpD78.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/template/admin/stats.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/delivery/template/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveryapp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/deliveryapp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveryapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/deliveryapp/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -27,6 +57,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
