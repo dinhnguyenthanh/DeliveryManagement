@@ -1,10 +1,10 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class User(AbstractUser):
-    avatar = models.ImageField(upload_to='user/%Y/%m', default=None)
+    avatar = models.ImageField(upload_to='user/%Y/%m', null=True)
 
 
 class ModelBase(models.Model):
@@ -20,20 +20,26 @@ class Customer(ModelBase):
     name = models.CharField(max_length=99, null=False)
     cmnd = models.CharField(null=False, max_length=10)
     number_phone = models.CharField(max_length=10, null=False)
-    avatar = models.ImageField(upload_to='customer/%Y/%m', default=None)
+    avatar = models.ImageField(upload_to='customer/%Y/%m', null=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["id"]
 
 
 class Deliver(ModelBase):
     name = models.CharField(max_length=99, null=False)
     cmnd = models.CharField(null=False, max_length=10)
     number_phone = models.CharField(max_length=10, null=False)
-    avatar = models.ImageField(upload_to='customer/%Y/%m', default=None)
+    avatar = models.ImageField(upload_to='deliver/%Y/%m', null=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["id"]
 
 
 class Category(ModelBase):
@@ -42,10 +48,14 @@ class Category(ModelBase):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["id"]
 
-class Order_list(ModelBase):
+
+class OrderList(ModelBase):
     name = models.CharField(max_length=255, null=False)
     description = models.TextField(null=True, blank=True)
+    images = models.ImageField(upload_to='orderList/%Y/%m', null=True)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
@@ -53,21 +63,25 @@ class Order_list(ModelBase):
 
     class Meta:
         unique_together = ('name', 'category')
+        ordering = ["id"]
 
 
 class Product(ModelBase):
     name = models.CharField(max_length=255, null=False)
-    images = models.ImageField(upload_to='product/%Y/%m', default=None)
-    price = models.DecimalField(decimal_places=6, max_digits=10)
+    images = models.ImageField(upload_to='product/%Y/%m', null=True)
+    price = models.DecimalField(decimal_places=0, max_digits=10)
     content = RichTextField()
-    order_list = models.ForeignKey(Order_list,
-                                   related_name='products',
-                                   related_query_name='my_product',
-                                   on_delete=models.CASCADE)
+    orderList = models.ForeignKey(OrderList,
+                                  related_name='products',
+                                  related_query_name='my_product',
+                                  on_delete=models.CASCADE)
     hashtags = models.ManyToManyField('Hashtag')
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["id"]
 
 
 class Comment(ModelBase):
@@ -82,9 +96,15 @@ class Comment(ModelBase):
     def __str__(self):
         return self.content
 
+    class Meta:
+        ordering = ["id"]
+
 
 class Hashtag(ModelBase):
     name = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["id"]
