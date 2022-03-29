@@ -4,7 +4,9 @@ from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('delivery', views.OrderListViewSet)
+router.register('orderLists', views.OrderListViewSet)
+router.register('products', views.ProductViewSet)
+router.register('users', views.UserViewSet)
 
 # /delivery/ - get
 # /delivery/ - post

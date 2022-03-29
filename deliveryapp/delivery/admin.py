@@ -8,6 +8,12 @@ from django.utils.html import mark_safe
 from django.urls import path
 
 
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['id', 'first_name', 'last_name', 'username']
+    list_filter = ['username']
+    search_fields = ['username']
+
+
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'cmnd', 'created_date', 'active']
     search_fields = ['name', 'cmnd']
@@ -78,7 +84,7 @@ class HashtagAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Deliver, DeliverAdmin)
 admin.site.register(Category, CategoryAdmin)

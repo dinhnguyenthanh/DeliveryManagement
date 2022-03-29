@@ -6,6 +6,9 @@ from django.db import models
 class User(AbstractUser):
     avatar = models.ImageField(upload_to='user/%Y/%m', null=True)
 
+    class Meta:
+        ordering = ["id"]
+
 
 class ModelBase(models.Model):
     active = models.BooleanField(default=True)
