@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser
 from .models import OrderList, Product, User
 from .serializers import OrderListSerializer, ProductSerializer, UserSerializer
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 
 
 class UserViewSet(viewsets.ViewSet, generics.CreateAPIView, generics.RetrieveAPIView):
@@ -23,7 +25,7 @@ class UserViewSet(viewsets.ViewSet, generics.CreateAPIView, generics.RetrieveAPI
 class OrderListViewSet(viewsets.ModelViewSet):
     queryset = OrderList.objects.filter(active=True)
     serializer_class = OrderListSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     # def get_permissions(self):
     #     if self.action == 'list':
@@ -44,6 +46,12 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     # an san phẩm voi product có active =False
 
+    @swagger_auto_schema(
+        operation_description="API hide product",
+        responses={
+            status.HTTP_200_OK: ProductSerializer()
+        }
+    )
     # /product/{pk}/hide-product
     @action(methods=['post'], detail=True, url_path='hide-product', url_name='hide-product')
     def hide_product(self, request, pk):
