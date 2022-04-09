@@ -5,6 +5,7 @@ from .models import User, Category, OrderList, Product, Comment, Hashtag
 from django import forms
 from django.utils.html import mark_safe
 from django.urls import path
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -38,9 +39,9 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'price', 'created_date', 'active', 'orderList']
     list_filter = ['name', 'price', 'created_date']
     search_fields = ['name', 'orderList__name']
-    readonly_fields = ['image']
+    readonly_fields = ['images']
 
-    def image(self, product):
+    def images(self, product):
         return mark_safe("<img src='/static/{img_url}' alt='{alt}' width='200px' />"
                          .format(img_url=product.images.name, alt=product.name))
 

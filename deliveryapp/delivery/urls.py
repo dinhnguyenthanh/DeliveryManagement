@@ -2,13 +2,15 @@ from django.db import router
 from django.urls import include, path, re_path
 from . import views
 from django.contrib import admin
-from rest_framework.routers import DefaultRouter
+from rest_framework import routers
 
-# router = DefaultRouter()
-# router.register('orderLists', views.OrderListViewSet)
-# router.register('products', views.ProductViewSet)
-# router.register('users', views.UserViewSet)
+
+router = routers.DefaultRouter()
+router.register(prefix='users', viewset=views.UserViewSet, basename='user')
+router.register(prefix='categories', viewset=views.CategoryViewSet, basename='category')
+router.register(prefix='orderLists', viewset=views.OrderListViewSet, basename='orderList')
+router.register(prefix='products', viewset=views.ProductViewSet, basename='product')
 
 urlpatterns = [
-    path('', views.index)
+    path('', include(router.urls))
 ]

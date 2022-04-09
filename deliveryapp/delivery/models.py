@@ -32,7 +32,7 @@ class Category(ModelBase):
 class OrderList(ModelBase):
     name = models.CharField(max_length=255, null=False)
     description = models.TextField(null=True, blank=True)
-    images = models.ImageField(upload_to='orderList/%Y/%m', null=True)
+    image = models.ImageField(upload_to='orderList/%Y/%m', blank=True, null=True)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
@@ -45,7 +45,7 @@ class OrderList(ModelBase):
 
 class Product(ModelBase):
     name = models.CharField(max_length=255, null=False)
-    images = models.ImageField(upload_to='product/%Y/%m', null=True)
+    image = models.ImageField(upload_to='product/%Y/%m', null=True)
     price = models.DecimalField(decimal_places=0, max_digits=10)
     content = RichTextField()
     orderList = models.ForeignKey(OrderList,
