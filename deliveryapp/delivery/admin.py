@@ -24,6 +24,12 @@ class OrderListAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'created_date', 'category']
     list_filter = ['name', 'created_date', 'category__name']
     search_fields = ['name', 'category__name']
+    readonly_fields = ['image_view']
+
+    def image_view(self, orderList):
+        if orderList:
+            return mark_safe("<img src='/static/{img_url}' alt='{alt}' width='200px' />"
+                             .format(img_url=orderList.image.name, alt=orderList.name))
 
 
 class ProductForm(forms.ModelForm):
@@ -39,11 +45,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'price', 'created_date', 'active', 'orderList']
     list_filter = ['name', 'price', 'created_date']
     search_fields = ['name', 'orderList__name']
-    readonly_fields = ['images']
+    readonly_fields = ['image_view']
 
-    def images(self, product):
+    def image_view(self, product):
         return mark_safe("<img src='/static/{img_url}' alt='{alt}' width='200px' />"
-                         .format(img_url=product.images.name, alt=product.name))
+                         .format(img_url=product.image.name, alt=product.name))
 
 
 class HashtagAdmin(admin.ModelAdmin):

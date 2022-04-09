@@ -1,9 +1,11 @@
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
-from .models import User, Category, Product, OrderList, Hashtag
+from .models import User, Category, Product, OrderList, Hashtag, Comment
 
 
 class UserSerializer(ModelSerializer):
+    avatar = SerializerMethodField(source='avatar')
+
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'email', 'username', 'password', 'avatar']
@@ -18,6 +20,12 @@ class UserSerializer(ModelSerializer):
 
         return user
 
+    def get_avatar(self, obj):
+        request = self.context['request']
+        path = '/static/%s' % obj.avatar.name
+
+        return request.build_absolute_uri(path)
+
 
 class CategorySerializer(ModelSerializer):
     class Meta:
@@ -30,13 +38,13 @@ class OrderListSerializer(ModelSerializer):
 
     class Meta:
         model = OrderList
-        fields = ['id', 'name', 'image', 'created_date', 'category']
+        fields = ['id', 'name', 'image', 'created_date', 'category_id']
 
     def get_image(self, obj):
         request = self.context['request']
         path = '/static/%s' % obj.image.name
 
-        return request.build_absobute_uri(path)
+        return request.build_absolute_uri(path)
 
 
 class HashTagSerializer(ModelSerializer):
@@ -57,4 +65,18 @@ class ProductSerializer(ModelSerializer):
         request = self.context['request']
         path = '/static/%s' % obj.image.name
 
-        return request.build_absobute_uri(path)
+        return request.build_absolute_uri(path)
+
+
+class CreateCommentSerializer(ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'content', 'user', 'product']
+
+
+class CommentSerializer(ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = Comment
+        exclude = ['active']
