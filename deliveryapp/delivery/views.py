@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework import viewsets, permissions, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -42,11 +40,11 @@ class OrderListViewSet(viewsets.ViewSet, generics.ListAPIView):
     serializer_class = OrderListSerializer
     # permission_classes = [permissions.IsAuthenticated]
 
-    # def get_permissions(self):
-    #     if self.action == 'list':
-    #         return [permissions.IsAuthenticated()]
-    #
-    #     return [permissions.AllowAny()]
+    def get_permissions(self):
+        if self.action == 'list':
+            return [permissions.IsAuthenticated()]
+
+        return [permissions.AllowAny()]
 
     @swagger_auto_schema(
         operation_description='Get the products of a order list',
