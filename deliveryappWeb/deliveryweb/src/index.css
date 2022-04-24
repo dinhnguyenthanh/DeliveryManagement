@@ -7,7 +7,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body{
+  margin: 0;
+  font-family: 'RobotoRegular', 'Segoe UI', 'RobotoThin';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'RobotoReguler';
+  src: url('./font/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: 'RobotoThin';
+  src: url('./font/Roboto-Thin.ttf');
 }

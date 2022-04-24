@@ -1,0 +1,71 @@
+.header {
+    margin-top: 30px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 20px au;
+}
+
+.header-top {
+    display: flex;
+    width: 100%;
+    height: 80px;
+}
+
+.header-top__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+
+.header-logo {
+    color: inherit;
+    text-decoration: inherit;
+    font-family: RobotoThin;
+    font-size: 90px;
+}
+
+.header-top__navbar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.header-top__seperator {
+    width: 100%;
+    border: none;
+    height: 1px;
+    margin-top: 2px;
+    background-color: black;
+}
+
+.header-top__navigation {
+    /* display: flex;
+    flex: 1; */
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    margin-left: 400px;
+    margin-top: 32px;
+}
+
+.header-bottom {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.header-bottom__email {
+    margin-right: 55px;
+    font-size: 19px;
+}
+
+.header-bottom__phone {
+    margin-right: 70px;
+    font-size: 19px;
+}
