@@ -6,8 +6,7 @@ body {
 }
 
 .navbar {
-    margin-top: 0;
-    margin-bottom: 0px;
+    padding-bottom: 0px !important;
 }
 
 * {
@@ -26,8 +25,8 @@ i {
 .navbar-mainbg {
   background-color: #000000;
   padding: 0px;
-  margin: 0px;
 }
+
 #navbarSupportedContent {
   overflow: hidden;
   position: relative;
