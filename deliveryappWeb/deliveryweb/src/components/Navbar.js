@@ -1,37 +1,37 @@
-import React, { useEffect } from 'react'
-import { NavLink } from 'react-router-dom';
+import React , {useEffect} from 'react';
 import '../static/Navbar.css';
+import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 
-
 const Navbar = () => {
-    function animation() {
+
+    function animation(){
         var tabsNewAnim = $('#navbarSupportedContent');
         var activeItemNewAnim = tabsNewAnim.find('.active');
         var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
         var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
         var itemPosNewAnimTop = activeItemNewAnim.position();
         var itemPosNewAnimLeft = activeItemNewAnim.position();
-        
-        $('.hori-selector').css({
-            "top": itemPosNewAnimTop.top + "px",
-            "left": itemPosNewAnimLeft.left + "px",
+
+        $(".hori-selector").css({
+            "top":itemPosNewAnimTop.top + "px", 
+            "left":itemPosNewAnimLeft.left + "px",
             "height": activeWidthNewAnimHeight + "px",
             "width": activeWidthNewAnimWidth + "px"
         });
 
-        $('#navbarSupportedContent').on("click", "li", function(e){
+        $("#navbarSupportedContent").on("click","li",function(e){
             $('#navbarSupportedContent ul li').removeClass("active");
-            $(this).addClass('active');
-            var activeWidthNewAnimHeight = $(this).innerHeight();
-            var activeWidthNewAnimWidth = $(this).innerWidth();
-            var itemPosNewAnimTop = $(this).position();
-            var itemPosNewAnimLeft = $(this).position();
-            $(".hori-selector").css({
-                "top": itemPosNewAnimTop.top + "px",
-                "left": itemPosNewAnimLeft.left + "px",
-                "height": activeWidthNewAnimHeight + "px",
-                "width": activeWidthNewAnimWidth + "px"
+                $(this).addClass('active');
+                var activeWidthNewAnimHeight = $(this).innerHeight();
+                var activeWidthNewAnimWidth = $(this).innerWidth();
+                var itemPosNewAnimTop = $(this).position();
+                var itemPosNewAnimLeft = $(this).position();
+                $(".hori-selector").css({
+                    "top":itemPosNewAnimTop.top + "px", 
+                    "left":itemPosNewAnimLeft.left + "px",
+                    "height": activeWidthNewAnimHeight + "px",
+                    "width": activeWidthNewAnimWidth + "px"
             });
         });
     }
@@ -39,71 +39,66 @@ const Navbar = () => {
     useEffect(() => {
         animation();
         $(window).on('resize', function(){
-            setTimeout(function() {animation();}, 500)
-        })
-    }, [])
-
+            setTimeout(function(){ 
+                animation(); 
+            }, 500);
+        });
+    }, []);
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-mainbg'>
-            <NavLink className='navbar-brand navbar-logo' to='/' exact>
+        <nav className="navbar navbar-expand-lg navbar-mainbg">
+            <NavLink className="navbar-brand navbar-logo" to="/" exact>
                 Web Delivery
             </NavLink>
-
-            <button 
-                className='navbar-toggler' 
-                onClick={ function(){
-                    setTimeout(function(){animation(); });
+            
+            <button className="navbar-toggler"
+                    onClick={ function(){
+                        setTimeout(function(){ 
+                            animation(); 
+                        });
                 }}
-                type="button" data-toggle="collapse" 
-                data-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" aria-expanded="false" 
-                aria-label="Toggle navigation">
+                type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i className="fas fa-bars text-white"></i>
             </button>
-
-            <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-                <ul className='navbar-nav ml-auto'>
-                    <div className='hori-selector'>
-                        <div className='left'></div>
-                        <div className='right'></div>
+        
+            <div 
+                className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav ml-auto">
+                    <div className="hori-selector">
+                        <div className="left"></div>
+                        <div className="right"></div>
                     </div>
-
-
-                    <li className='nav-item active'>
-                        <NavLink className='nav-link' to='/' exact>
+                    
+                    <li className="nav-item active">
+                        <NavLink className="nav-link" to="/">
                             <i class="fas fa-home"></i>
-                            Trang chủ
+                            Trang Chủ
                         </NavLink>
                     </li>
-                    <li className='nav-item'>
-                        <NavLink className='nav-link' to='/service' exact>
+
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/service">
                             <i class="fab fa-servicestack"></i>
                             Dịch vụ
-                        </NavLink>
+                        </NavLink> 
                     </li>
-                    <li className='nav-item '>
-                        <NavLink className='nav-link' to='/customer' exact>
-                            <i class="fas fa-id-card"></i>
+
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/customer" >
+                            <i className="far fa-address-book"> </i>
                             Khách hàng
                         </NavLink>
                     </li>
-                    <li className='nav-item'>
-                        <NavLink className='nav-link' to='/shipper' exact>
-                            <i class="fas fa-people-carry"></i>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/shipper" >
+                            <i class="fas fa-shipping-fast"></i>
                             Tài xế
                         </NavLink>
                     </li>
-                    <li className='nav-item'>
-                        <NavLink className='nav-link' to='/support' exact>
-                            <i class="fas fa-envelope-open-text"></i>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/support" >
+                            <i class="fas fa-envelope-open"></i>
                             Hỗ trợ
-                        </NavLink>
-                    </li>
-                    <li className='nav-item'>
-                        <NavLink className='nav-link' to='/about' exact>
-                            <i class="fas fa-info-circle"></i>
-                            Thông tin
                         </NavLink>
                     </li>
                 </ul>
@@ -111,5 +106,4 @@ const Navbar = () => {
         </nav>
     )
 }
-
-export default Navbar
+export default Navbar;
