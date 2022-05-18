@@ -13,7 +13,8 @@ i {
 }
 
 .ml-auto{
-  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-left: 25px !important;
 }
 
 .navbar {
@@ -23,7 +24,7 @@ i {
 
 .navbar-logo {
   padding: 15px;
-  color: #fff;
+  color: #000000;
   pointer-events: none;
 }
 
@@ -49,7 +50,7 @@ i {
 #navbarSupportedContent ul li a {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   display: block;
   padding: 20px 20px;
   transition-duration: 0.6s;
@@ -66,7 +67,7 @@ i {
   position: absolute;
   right: 20px;
   top: 10px;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Font Awesome 5 Free';
   display: inline-block;
   padding-right: 3px;
@@ -152,4 +153,22 @@ i {
     bottom: -25px;
     left: -25px;
   }
+}
+
+.main-login {
+  margin-right: auto !important;
+}
+
+.registor {
+  border-radius: 10px !important;
+  min-width: 100px !important;
+  margin-right: 15px !important;
+  color: #000000 !important;
+}
+
+.login {
+  border-radius: 10px !important;
+  min-width: 100px !important;
+  margin-right: 15px !important;
+  color: #000000 !important;
 }
