@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets, generics
+from .models import Shipper, Customer, Order
+from .serializers import ShipperSerializer
 
 
-def index(request):
-    return HttpResponse('Hello world')
+class ShipperViewSet(viewsets.ViewSet, generics.ListAPIView):
+    queryset = Shipper
+    serializer_class = ShipperSerializer
 

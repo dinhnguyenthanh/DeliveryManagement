@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
-from . models import User, Customer, Shipper
+from . models import User, Customer, Shipper, Order, Bargain, Feedback
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -21,9 +20,11 @@ class CategoryItemAdmin(admin.ModelAdmin):
 
 
 # admin.site.register(User)
+admin.site.register(Customer)
+admin.site.register(Shipper)
+admin.site.register(Order)
+admin.site.register(Bargain)
+admin.site.register(Feedback)
 # admin.site.register(Category, CategoryAdmin)
 # admin.site.register(CategoryItem, CategoryItemAdmin)
-# admin.site.register(Customer)
-# admin.site.register(Shipper)
-# admin.site.register(Goods)
 

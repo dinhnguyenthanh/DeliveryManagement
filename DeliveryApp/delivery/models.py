@@ -10,6 +10,15 @@ class User(AbstractUser):
     date_of_birth = models.DateTimeField(blank=True, null=True)
 
 
+class ModelBase(models.Model):
+    class Meta:
+        abstract = True
+
+    active = models.BooleanField(default=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+
 class Shipper(User):
     class Meta:
         unique_together = ('driver_licence_number', 'driver_licence_class')
@@ -50,15 +59,6 @@ class Customer(User):
         return self.username
 
 
-class ModelBase(models.Model):
-    class Meta:
-        abstract = True
-
-    active = models.BooleanField(default=True)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-
-
 # Đơn hàng khách hàng đăng
 class Order(ModelBase):
     description = RichTextField()
@@ -67,8 +67,9 @@ class Order(ModelBase):
     distance = models.FloatField(blank=True)
     image = models.ImageField(null=True, blank=True, upload_to='orders/%Y/%m')
     weight = models.FloatField(blank=True)
-    size = models.CharField(max_length=10,blank=True)
-    status = models.CharField(max_length=50,null=False, default="Open")   # biến để chứa tính trạng bài viết: đang đấu giá, đã đấu giá thành công
+    size = models.CharField(max_length=10, blank=True)
+    status = models.CharField(max_length=50, null=False,
+                              default="Open")  # biến để chứa tính trạng bài viết: đang đấu giá, đã đấu giá thành công
     # created_date (kế thừa)
     # updated_date (kế thừa)
     # active (kế thừa): các bài viết đã xoá
@@ -96,8 +97,8 @@ class Bargain(ModelBase):
     is_confirmed = models.BooleanField(default=False, null=False, blank=False)
 
     # Thiết lập khoá ngoại
-    shipper = models.ForeignKey('Shipper', on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True)
+    shipper = models.ForeignKey('Shipper', on_delete=models.SET_NULL, null=True, related_name="bg_shippers")
+    order = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True, related_name="bg_orders")
 
 
 class Feedback(ModelBase):
@@ -109,6 +110,6 @@ class Feedback(ModelBase):
     rating = models.SmallIntegerField(blank=True)
 
     # Thiết lập khoá ngoại
-    customer = models.ForeignKey('Customer', on_delete=models.SET_NULL, null=True)
-    shipper = models.ForeignKey('Shipper', on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey('Customer', on_delete=models.SET_NULL, null=True, related_name="fb_customers")
+    shipper = models.ForeignKey('Shipper', on_delete=models.SET_NULL, null=True, related_name="fb_shippers")
+    order = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True, related_name="fb_orders")

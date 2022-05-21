@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd12baff-cdf3-49ce-b098-fbb9f6276775" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DeliveryApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DeliveryApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeliveryApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeliveryApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delivery/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delivery/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +43,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\OneDrive - addimid\Tai Lieu\OU\Nam [3]\HocKi [2]\CacCongNgheLapTrinhHienDai_thayDuongHuuThanh\DoAn\DeliveryManagement\DeliveryApp\delivery\static" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,5 +61,16 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
