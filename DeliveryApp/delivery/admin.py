@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from . models import User, Category, Customer, Shipper, CategoryItem, Goods
+from . models import User, Customer, Shipper
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -20,10 +20,10 @@ class CategoryItemAdmin(admin.ModelAdmin):
             return mark_safe('<img src="/static/{url}" width="160" />'.format(url=item.image.name))
 
 
-admin.site.register(User)
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(CategoryItem,CategoryItemAdmin)
-admin.site.register(Customer)
-admin.site.register(Shipper)
-admin.site.register(Goods)
+# admin.site.register(User)
+# admin.site.register(Category, CategoryAdmin)
+# admin.site.register(CategoryItem, CategoryItemAdmin)
+# admin.site.register(Customer)
+# admin.site.register(Shipper)
+# admin.site.register(Goods)
 

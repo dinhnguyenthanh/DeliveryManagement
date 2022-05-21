@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CKEDITOR_UPLOAD_PATH = "images/goods/"
+CKEDITOR_UPLOAD_PATH = "images/orders/"
 
 # Application definition
 
@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'deliverydb',
         'USER': 'root',
-        'PASSWORD': '12345678',
+        'PASSWORD': '281001',
         'HOST': ''  # mặc định localhost
     }
 }
