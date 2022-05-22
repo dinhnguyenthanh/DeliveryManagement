@@ -18,7 +18,7 @@ class ModelBase(models.Model):
 
 class Shipper(ModelBase):
     user_type = models.ForeignKey(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(null=True, upload_to='shipper/%Y/%m')
+    avatar = models.ImageField(null=True, upload_to='shippers/%Y/%m')
 
     def __str__(self):
         return self.user_type
@@ -43,7 +43,7 @@ class Category(ModelBase):
 
 class CategoryItem(ModelBase):
     name = models.CharField(max_length=255, null=False)
-    image = models.ImageField(null=True, blank=True, upload_to='categoryItem/%Y/%m')
+    image = models.ImageField(null=True, blank=True, upload_to='categoryItems/%Y/%m')
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
@@ -59,7 +59,10 @@ class Goods(ModelBase):
     name = models.CharField(max_length=255)
     content = RichTextField()
     image = models.ImageField(null=True, blank=True, upload_to='goods/%Y/%m')
-    category_item = models.ForeignKey(CategoryItem, on_delete=models.CASCADE)
+    category_item = models.ForeignKey(CategoryItem,
+                                      related_name='goodss',
+                                      related_query_name='my goods',
+                                      on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

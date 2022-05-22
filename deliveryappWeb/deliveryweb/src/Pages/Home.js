@@ -1,55 +1,62 @@
-import React from 'react'
-import { Button, Card, Carousel } from 'react-bootstrap'
-import '../image/banner1.jpg'
+import React, { useEffect, useState } from 'react'
+import { Button, ButtonGroup, Container, Row} from 'react-bootstrap'
+import { useLocation } from 'react-router-dom'
+import Carditem from '../components/Carditem'
+import Api, { endpoints } from '../configs/Api'
+import carouselCompo from '../components/carouselCompo'
 
 const Home = () => {
-    return(
-        <div className='container' style={{marginTop:"40px", paddingLeft:"0px", paddingRight:"0px"}}>
-            <Carousel variant="dark" style={{height:"500px"}}>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src='banner1.jpg'
-                        alt="First slide" />
-                    <Carousel.Caption>
-                        <h5>Giano hàng nhanh</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=eee"
-                        alt="Second slide"/>
-                    <Carousel.Caption>
-                        <h5>Second slide label</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=e5e5e5"
-                        alt="Third slide"/>
-                    <Carousel.Caption>
-                        <h5>Third slide label</h5>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel>
 
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-        </div>
+    const [categoryitems, setCategoryitems] = useState([])
+    const location = useLocation()
+    const [prev, setPrev] = useState(false)
+    const [next, setNext] = useState(false)
+    const [page, setPage] = useState(1)
+
+    useEffect(() => {
+        let loadCategoryitems = async() => {
+            let query = location.search
+            if (query === "")
+                query = `?page=${page}`
+            else 
+                query += `&page=${page}`
+
+            try {
+                let res = await Api.get(`${endpoints['categoryitems']}${query}`)
+                setCategoryitems(res.data.results)
+
+                setNext(res.data.next !== null)
+                setPrev(res.data.previous !== null)
+            } catch (error) {
+                console.info(error)
+            }
+        }
+
+        loadCategoryitems()
+    }, [location.search, page])
+
+    const paging = (inc) => {
+        setPage(page + inc)
+    }
+
+
+    return (
+        <Container style={{paddingTop:"30px", margin:"auto"}}>
+            <carouselCompo />
+
+            <h1 style={{marginTop:"20px", marginBottom:"20px"}} className='text-center text-danger'>Danh mục</h1>
+            
+            <ButtonGroup>
+                <Button onClick={() => paging(-1)} variant='info' disabled={!prev}>&lt;&lt;</Button>
+                <Button onClick={() => paging(1)} variant='info' disabled={!next}>&gt;&gt;</Button>
+            </ButtonGroup>
+
+            <Row>
+                {categoryitems?.map((c) => (
+                    <Carditem obj={c} />
+                ))}
+            </Row>
+        </Container>
     )
 }
 
